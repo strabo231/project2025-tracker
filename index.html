@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2025 Implementation Tracker - October 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #e4e4e7;
+            background: #0a0a0f;
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e1e2e 0%, #181825 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1em;
+            opacity: 0.9;
+            color: #a1a1aa;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .stats-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .stat-box.completed { border-left: 4px solid #10b981; }
+        .stat-box.progress { border-left: 4px solid #f59e0b; }
+        .stat-box.remaining { border-left: 4px solid #ef4444; }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-box.completed .stat-number { color: #10b981; }
+        .stat-box.progress .stat-number { color: #f59e0b; }
+        .stat-box.remaining .stat-number { color: #ef4444; }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            user-select: none;
+        }
+        
+        .section-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .section-header h2 {
+            font-size: 1.3em;
+            color: #e4e4e7;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5em;
+            color: #64748b;
+            transition: transform 0.3s;
+        }
+        
+        .section-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .section-content.active {
+            max-height: 10000px;
+        }
+        
+        .content-inner {
+            padding: 20px;
+        }
+        
+        .intro-text {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .category-section {
+            margin: 20px 0;
+        }
+        
+        .category-title {
+            background: rgba(147, 51, 234, 0.2);
+            color: #c4b5fd;
+            padding: 10px 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            margin: 15px 0 10px 0;
+        }
+        
+        .bullet-list {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .bullet-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .emphasis {
+            background: rgba(147, 51, 234, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+            color: #c4b5fd;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .section {
+                margin: 15px 10px;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                padding: 8px 6px;
+            }
+            
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #a1a1aa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Project 2025 Implementation Tracker</h1>
+        <p class="subtitle">A Comprehensive Analysis of Progress</p>
+        <span class="date-badge" id="lastUpdated">Loading...</span>
+    </div>
+
+    <div class="stats-container">
+        <h3 style="margin-bottom: 10px;">Overall Progress (<span id="totalProposals">318</span> Total Proposals)</h3>
+        <div class="stat-grid">
+            <div class="stat-box completed">
+                <span class="stat-number" id="completedCount">118</span>
+                <span class="stat-label">Completed (<span id="completedPercent">37</span>%)</span>
+            </div>
+            <div class="stat-box progress">
+                <span class="stat-number" id="inProgressCount">67</span>
+                <span class="stat-label">In Progress (<span id="inProgressPercent">21</span>%)</span>
+            </div>
+            <div class="stat-box remaining">
+                <span class="stat-number" id="remainingCount">133</span>
+                <span class="stat-label">Remaining (<span id="remainingPercent">42</span>%)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header active" onclick="toggleSection(this)">
+            <h2>📋 What is Project 2025?</h2>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div class="section-content active">
+            <div class="content-inner">
+                <div class="intro-text">
+                    <strong>Important Context:</strong> This analysis tracks verifiable executive actions, laws, and proposals based on independent trackers and government records.
+                </div>
+                <p><strong>Project 2025</strong>, formally titled <em>Mandate for Leadership: The Conservative Promise</em>, is a 900+ page policy blueprint published in April 2023 by the Heritage Foundation and over 100 conservative organizations.</p>
+                
+                <h4 style="margin-top: 15px;">Four Main Pillars:</h4>
+                <ul class="bullet-list">
+                    <li><strong>Personnel Database:</strong> A database of political appointees for rapid staffing</li>
+                    <li><strong>Policy Agenda:</strong> Comprehensive proposals across 34 federal agencies</li>
+                    <li><strong>Training Academy:</strong> Educational program for conservative appointees</li>
+                    <li><strong>180-Day Playbook:</strong> Rapid implementation strategy</li>
+                </ul>
+                
+                <h4 style="margin-top: 15px;">Key Focus Areas:</h4>
+                <ul class="bullet-list">
+                    <li>Expanded presidential authority and centralized power</li>
+                    <li>Deregulation across industries</li>
+                    <li>Conservative social policies</li>
+                    <li>Reductions in federal spending and workforce</li>
+                    <li>Immigration enforcement</li>
+                    <li>Energy independence and fossil fuel expansion</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2>✅ Accomplished (<span id="accomplishedCount">118</span> Proposals)</h2>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="content-inner" id="accomplishedContent">
+                <div class="loading">Loading data...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2>🔄 In Progress (<span id="inProgressCountHeader">67</span> Proposals)</h2>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="content-inner" id="inProgressContent">
+                <div class="loading">Loading data...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2>⏳ Remaining (<span id="remainingCountHeader">133</span> Proposals)</h2>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="content-inner" id="remainingContent">
+                <div class="loading">Loading data...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Sources:</strong> Analysis based on independent trackers (project2025.observer), Heritage Foundation documents, executive orders, and government records.</p>
+        <p style="margin-top: 10px;">Data current as of <span id="footerDate">October 4, 2025</span></p>
+        <p style="margin-top: 10px; font-size: 0.85em;">This is a factual tracking document. Democracy depends on informed citizens.</p>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Close all sections
+            document.querySelectorAll('.section-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
+            });
+            
+            // Open clicked section if it wasn't active
+            if (!isActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Load and render data from JSON
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                // Update metadata
+                document.getElementById('lastUpdated').textContent = `Updated: ${data.metadata.lastUpdated}`;
+                document.getElementById('footerDate').textContent = data.metadata.lastUpdated;
+                document.getElementById('totalProposals').textContent = data.metadata.totalProposals;
+                document.getElementById('completedCount').textContent = data.metadata.completed;
+                document.getElementById('accomplishedCount').textContent = data.metadata.completed;
+                document.getElementById('completedPercent').textContent = Math.round((data.metadata.completed / data.metadata.totalProposals) * 100);
+                document.getElementById('inProgressCount').textContent = data.metadata.inProgress;
+                document.getElementById('inProgressCountHeader').textContent = data.metadata.inProgress;
+                document.getElementById('inProgressPercent').textContent = Math.round((data.metadata.inProgress / data.metadata.totalProposals) * 100);
+                document.getElementById('remainingCount').textContent = data.metadata.remaining;
+                document.getElementById('remainingCountHeader').textContent = data.metadata.remaining;
+                document.getElementById('remainingPercent').textContent = Math.round((data.metadata.remaining / data.metadata.totalProposals) * 100);
+                
+                // Render accomplished section
+                renderAccomplished(data.accomplished);
+                
+                // Render in progress section
+                renderInProgress(data.inProgress);
+                
+                // Render remaining section
+                renderRemaining(data.remaining);
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('accomplishedContent').innerHTML = '<p style="color: #ef4444;">Error loading data. Please refresh the page.</p>';
+            }
+        }
+
+        function renderAccomplished(categories) {
+            const container = document.getElementById('accomplishedContent');
+            let html = '<p style="margin-bottom: 15px;"><strong>These proposals have been fully or partially implemented</strong> through executive orders (primarily in the first 100 days) or congressional reconciliation bills by mid-2025.</p>';
+            
+            categories.forEach(category => {
+                html += `
+                    <div class="category-section">
+                        <div class="category-title">${category.category}</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Date Completed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+                
+                category.items.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${item.action}</td>
+                            <td>${item.dateCompleted}</td>
+                        </tr>
+                    `;
+                });
+                
+                html += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            });
+            
+            html += '<p style="margin-top: 20px; font-style: italic; color: #64748b;">Note: These proposals represent implementation through executive authority (37 executive orders mirroring Project 2025 proposals).</p>';
+            container.innerHTML = html;
+        }
+
+        function renderInProgress(categories) {
+            const container = document.getElementById('inProgressContent');
+            let html = '<p style="margin-bottom: 15px;"><strong>These proposals involve proposed rules, introduced bills, or agency reviews</strong>, often stalled by Congress, courts, or bureaucracy.</p>';
+            
+            categories.forEach(category => {
+                html += `
+                    <div class="category-section">
+                        <div class="category-title">${category.category}</div>
+                        <ul class="bullet-list">
+                `;
+                
+                category.items.forEach(item => {
+                    html += `<li><span class="emphasis">${item.proposal}</span> - ${item.status}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                `;
+            });
+            
+            html += '<p style="margin-top: 20px; font-style: italic; color: #64748b;">Note: Bipartisan opposition and shutdown delays affect ~40% of these proposals.</p>';
+            container.innerHTML = html;
+        }
+
+        function renderRemaining(areas) {
+            const container = document.getElementById('remainingContent');
+            let html = '<p style="margin-bottom: 15px;"><strong>These proposals await initiation</strong>, often requiring congressional approval or facing legal barriers.</p>';
+            html += '<table><thead><tr><th>Policy Area</th><th>Key Remaining Proposals</th><th>Barriers/Status</th></tr></thead><tbody>';
+            
+            areas.forEach(area => {
+                const proposalsList = area.proposals.map(p => `• ${p}`).join('<br>');
+                html += `
+                    <tr>
+                        <td><strong>${area.area}</strong></td>
+                        <td>${proposalsList}</td>
+                        <td>${area.barriers}</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            html += '<p style="margin-top: 20px; font-style: italic; color: #64748b;">Note: ~20% of these could shift to "in progress" post-shutdown resolution. Vulnerable to midterm elections.</p>';
+            container.innerHTML = html;
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadData);
+        
+        // Keep first section open by default
+        const firstSection = document.querySelector('.section-header');
+        if (firstSection) {
+            firstSection.classList.add('active');
+            firstSection.nextElementSibling.classList.add('active');
+        }
+    </script>
+</body>
+</html>

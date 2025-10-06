@@ -1,0 +1,324 @@
+{
+  "metadata": {
+    "lastUpdated": "2025-10-04",
+    "totalProposals": 318,
+    "completed": 118,
+    "inProgress": 67,
+    "remaining": 133
+  },
+  "accomplished": [
+    {
+      "category": "Executive Power & Government Staffing",
+      "items": [
+        {
+          "action": "Reinstated Schedule F to reclassify ~50,000 civil servants as at-will employees",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Imposed federal hiring freeze on career officials",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Shifted emergency response (FEMA) costs to states",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Authorized Secret Service as D.C. law enforcement",
+          "dateCompleted": "Aug 8, 2025"
+        },
+        {
+          "action": "Ended \"weaponization\" of DOJ via internal review",
+          "dateCompleted": "Sep 2025"
+        }
+      ]
+    },
+    {
+      "category": "Social Issues",
+      "items": [
+        {
+          "action": "Ended all federal DEI/DEIA programs and deleted related terms from rules",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Recognized only two biological sexes; rescinded Title IX gender identity protections",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Banned transgender troops and ended military DEI",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Provided religious accommodations for federal workers",
+          "dateCompleted": "Jul 18-28, 2025"
+        },
+        {
+          "action": "Restricted gender transition care for minors",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Removed gender ideology/CRT from schools via Civil Rights Act enforcement",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Ended government anti-misinformation efforts",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Enforced death penalty for federal crimes",
+          "dateCompleted": "Jul 18-28, 2025"
+        },
+        {
+          "action": "Promoted fertility awareness over contraception in family planning",
+          "dateCompleted": "Jul 18-28, 2025"
+        }
+      ]
+    },
+    {
+      "category": "Economy & Labor",
+      "items": [
+        {
+          "action": "Reversed IRS expansion (6,000 employees laid off, tax enforcement funding cut)",
+          "dateCompleted": "Sep 16, 2025"
+        },
+        {
+          "action": "Imposed Medicaid work requirements",
+          "dateCompleted": "Jul 4, 2025"
+        },
+        {
+          "action": "Cut overtime protections for 4.3M workers",
+          "dateCompleted": "Jul 23, 2025"
+        },
+        {
+          "action": "Ended Office of Federal Contract Compliance Programs (OFCCP)",
+          "dateCompleted": "Jul 23, 2025"
+        },
+        {
+          "action": "Politicized Federal Reserve appointments",
+          "dateCompleted": "Jul 4, 2025"
+        },
+        {
+          "action": "Used contracts to counter \"woke\" corporate policies",
+          "dateCompleted": "Jul 23, 2025"
+        }
+      ]
+    },
+    {
+      "category": "Immigration",
+      "items": [
+        {
+          "action": "Mandated migrant detention with state/local cooperation",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Suspended U.S. Refugee Admissions Program (USRAP)",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Imposed sanctions on countries refusing deportees",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Restricted funds to sanctuary cities",
+          "dateCompleted": "Jan-Feb 2025"
+        },
+        {
+          "action": "Deployed DOD for southern border defense/wall construction",
+          "dateCompleted": "Jan-Feb 2025"
+        }
+      ]
+    },
+    {
+      "category": "Energy & Environment",
+      "items": [
+        {
+          "action": "Revoked Biden's climate EO 14008 (\"Tackling the Climate Crisis\")",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Halted IRA/IIJA disbursements for renewables ($100B+ paused)",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Eliminated appliance efficiency standards (lightbulbs, showers, etc.)",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Developed Alaska energy projects; boosted domestic minerals mining",
+          "dateCompleted": "Jan-Mar 2025"
+        },
+        {
+          "action": "Withdrew from WHO (World Health Organization)",
+          "dateCompleted": "Jan-Mar 2025"
+        }
+      ]
+    },
+    {
+      "category": "Foreign Affairs & Media",
+      "items": [
+        {
+          "action": "Froze foreign aid disbursements ($7B+ clawed back)",
+          "dateCompleted": "Jul 18, 2025"
+        },
+        {
+          "action": "Reinstated Mexico City Policy (banned abortion funding abroad)",
+          "dateCompleted": "Jul 18, 2025"
+        },
+        {
+          "action": "Ended federal funding for NPR/PBS",
+          "dateCompleted": "Jul 18, 2025"
+        },
+        {
+          "action": "Scaled back USAID to pre-pandemic levels (near-dismantling)",
+          "dateCompleted": "Sep 26, 2025"
+        }
+      ]
+    },
+    {
+      "category": "Housing",
+      "items": [
+        {
+          "action": "Ended PAVE programs (anti-bias home appraisals)",
+          "dateCompleted": "Jul 10, 2025"
+        }
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "category": "Executive Power",
+      "items": [
+        {
+          "proposal": "Expanding presidential impoundment authority",
+          "status": "OMB rule proposed; Senate hearings ongoing"
+        }
+      ]
+    },
+    {
+      "category": "Social Issues",
+      "items": [
+        {
+          "proposal": "Restricting medication abortion access",
+          "status": "HHS guidance under review; tied to Hyde Amendment revision"
+        },
+        {
+          "proposal": "Denying foster care protections for LGBTQ+ youth",
+          "status": "HHS pilot programs proposed"
+        }
+      ]
+    },
+    {
+      "category": "Economy & Labor",
+      "items": [
+        {
+          "proposal": "Limiting food assistance (SNAP) for 40M+ people",
+          "status": "USDA bill in House committee"
+        },
+        {
+          "proposal": "Cutting Head Start for 1M children",
+          "status": "Education reconciliation add-on"
+        },
+        {
+          "proposal": "Pushing Medicare enrollees to private plans",
+          "status": "CMS rulemaking"
+        }
+      ]
+    },
+    {
+      "category": "Immigration",
+      "items": [
+        {
+          "proposal": "Mass deportation logistics with private contractors",
+          "status": "DHS RFPs issued; funding debate ongoing"
+        }
+      ]
+    },
+    {
+      "category": "Energy & Environment",
+      "items": [
+        {
+          "proposal": "Full Paris Accord withdrawal",
+          "status": "State Dept. negotiations"
+        },
+        {
+          "proposal": "Repealing remaining IRA subsidies",
+          "status": "EPA rules proposed, facing lawsuits"
+        }
+      ]
+    },
+    {
+      "category": "Education & Health",
+      "items": [
+        {
+          "proposal": "Denying student loans in 25 states over immigrant tuition",
+          "status": "ED proposal"
+        },
+        {
+          "proposal": "Stopping prescription drug price negotiations",
+          "status": "HHS review"
+        }
+      ]
+    },
+    {
+      "category": "Foreign Affairs",
+      "items": [
+        {
+          "proposal": "Undermining intelligence agencies (CIA restructuring)",
+          "status": "Bill introduced"
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    {
+      "area": "Social Issues",
+      "proposals": [
+        "Eliminate all federal abortion funding interpretations",
+        "Roll back LGBTQ+ workplace protections",
+        "Ban critical race theory nationwide via funding cuts"
+      ],
+      "barriers": "Needs full congressional buy-in; court challenges anticipated"
+    },
+    {
+      "area": "Economy & Labor",
+      "proposals": [
+        "Cut ARP job programs (220K jobs at risk)",
+        "Restrict free trade; impose tariffs on allies",
+        "Weaken union rights further"
+      ],
+      "barriers": "Tied to reconciliation; shutdown halts progress"
+    },
+    {
+      "area": "Health & Education",
+      "proposals": [
+        "Privatize more Medicare (33M affected)",
+        "End all DEI in higher education",
+        "Expose foster kids (368K) to discrimination risks"
+      ],
+      "barriers": "Agency rulemaking stalled; Democratic filibuster threats"
+    },
+    {
+      "area": "Environment",
+      "proposals": [
+        "Withdraw from additional climate pacts (UN frameworks)",
+        "Dismantle EPA climate offices entirely"
+      ],
+      "barriers": "Environmental lawsuits; international diplomacy pending"
+    },
+    {
+      "area": "Military & Foreign",
+      "proposals": [
+        "Concentrate military decisions in White House",
+        "Promote isolationism (NATO pullback)"
+      ],
+      "barriers": "Senate confirmation delays for appointees"
+    },
+    {
+      "area": "Other",
+      "proposals": [
+        "Fully staff 20K+ loyalists via database",
+        "Launch Heritage training academy for appointees"
+      ],
+      "barriers": "Database incomplete; academy funding unallocated"
+    }
+  ]
+}
